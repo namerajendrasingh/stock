@@ -1,0 +1,2 @@
+# stock
+making stock project
