@@ -1,0 +1,113 @@
+@charset "UTF-8";
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #e9ecef, #f4f7fa);
+    margin: 0;
+    overflow-x: hidden;
+}
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+    color: white;
+    padding-top: 30px;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.sidebar h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+.sidebar a {
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    transition: background-color 0.3s, padding-left 0.3s;
+}
+.sidebar a i {
+    margin-right: 10px;
+}
+.sidebar a:hover {
+    background-color: #22d3ee;
+    color: #1e3a8a;
+    padding-left: 30px;
+}
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    min-height: 100vh;
+}
+.header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #22d3ee 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.header p {
+    font-size: 1.1rem;
+}
+/* Portfolio Summary and Table Sections */
+.portfolio-summary-section, .portfolio-table-section {
+    padding: 50px 0;
+}
+.portfolio-summary, .portfolio-table {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.portfolio-summary h2, .portfolio-table h2 {
+    color: #1e3a8a;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.portfolio-table th {
+    background-color: #1e3a8a;
+    color: white;
+    font-weight: 600;
+}
+.portfolio-table td {
+    vertical-align: middle;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-260px);
+    }
+    .sidebar.active {
+        transform: translateX(0);
+        z-index: 1000;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .toggle-btn {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1001;
+        border-radius: 10px;
+    }
+    .portfolio-summary, .portfolio-table {
+        margin-bottom: 20px;
+    }
+}

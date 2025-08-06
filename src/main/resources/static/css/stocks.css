@@ -1,0 +1,192 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #e9ecef, #f4f7fa);
+    margin: 0;
+    overflow-x: hidden;
+}
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+    color: white;
+    padding-top: 30px;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.sidebar h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.sidebar a {
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    text-decoration: none;
+    transition: background-color 0.3s, padding-left 0.3s, color 0.3s;
+}
+.sidebar a i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+.sidebar a:hover {
+    background-color: #22d3ee;
+    color: #1e3a8a;
+    padding-left: 30px;
+}
+.sidebar a.active {
+    background-color: #22d3ee;
+    color: #1e3a8a;
+    font-weight: 600;
+    border-left: 4px solid #1e3a8a;
+}
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #22d3ee 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.header p {
+    font-size: 1.1rem;
+}
+/* Stock Manage Section */
+.stock-manage-section {
+    padding: 50px 0;
+    flex: 1;
+}
+.stock-table {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.stock-table h2 {
+    color: #1e3a8a;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.stock-table th {
+    background-color: #1e3a8a;
+    color: white;
+    font-weight: 600;
+}
+.stock-table td {
+    vertical-align: middle;
+}
+.pagination .page-link {
+    color: #1e3a8a;
+    border-radius: 8px;
+    margin: 0 3px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.pagination .page-link:hover {
+    background-color: #22d3ee;
+    color: #fff;
+}
+.pagination .page-item.active .page-link {
+    background-color: #1e3a8a;
+    border-color: #1e3a8a;
+    color: #fff;
+}
+/* Stock Form */
+.stock-form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.stock-form h2 {
+    color: #1e3a8a;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.stock-form .form-label {
+    font-weight: 700;
+    color: #1e3a8a;
+}
+.stock-form .form-control {
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.stock-form .form-control:focus {
+    border-color: #22d3ee;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.3);
+}
+.stock-form .btn-primary {
+    background: linear-gradient(135deg, #1e3a8a 0%, #22d3ee 100%);
+    border: none;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.stock-form .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.success-message {
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.error-message {
+    color: #dc3545;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-260px);
+    }
+    .sidebar.active {
+        transform: translateX(0);
+        z-index: 1001;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .toggle-btn {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1002;
+        border-radius: 10px;
+    }
+    .stock-table, .stock-form {
+        margin-bottom: 20px;
+    }
+    .stock-table h2, .stock-form h2 {
+        font-size: 1.5rem;
+    }
+}
