@@ -34,7 +34,7 @@
     <div class="main-content">
         <div class="header" data-aos="fade-down">
             <h1>Manage Stocks</h1>
-            <p>Add, edit, or view your stock holdings.</p>
+            <p>Add, edit, or view your stock holdings </p>
         </div>
 
         <!-- Stock List and Form Section -->

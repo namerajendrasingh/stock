@@ -264,6 +264,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
+                        <!-- Use Apache Kafka For handling this real time event Start -->
                         <tbody>
                             <tr>
                                 <td>APPLE</td>
@@ -298,6 +299,7 @@
                                 <td><a href="${pageContext.request.contextPath}/stocks/microsoft" class="btn btn-sm btn-primary" aria-label="View Microsoft stock details">View</a></td>
                             </tr>
                         </tbody>
+                         <!-- Use Apache Kafka For handling this real time event End -->
                     </table>
                 </div>
             </div>
