@@ -26,13 +26,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-        if (path.equals("/login") || path.equals("/auth/login") || 
-            path.equals("/register") || path.equals("/auth/register") || 
-            path.startsWith("/WEB-INF/")) { // Skip for WEB-INF paths
-            chain.doFilter(request, response);
+        System.out.println("Path : "+path);
+        if (path.equals("/login")
+            || path.equals("/auth/login")
+            || path.equals("/register")
+            || path.equals("/auth/register")
+            || path.startsWith("/static/")
+            || path.startsWith("/css/")
+            || path.startsWith("/js/")
+            || path.startsWith("/images/")
+            || path.startsWith("/WEB-INF/")) {
+            chain.doFilter(request, response); // NO AUTH for public endpoints
+           System.out.println("No Authentication required for received  path");
             return;
         }
-
         String token = extractToken(request);
         if (token != null && jwtTokenProvider.validateToken(token)) {
             String username = jwtTokenProvider.getUsernameFromJWT(token);

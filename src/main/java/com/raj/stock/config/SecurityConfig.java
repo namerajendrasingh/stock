@@ -31,21 +31,27 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/**","/login", "/auth/login", "/register", "/auth/register", "/static/**").permitAll()
-                .requestMatchers("/WEB-INF/**").denyAll() // Prevent direct access to WEB-INF
-                .requestMatchers("/dashboard", "/dashboard/**", "/stocks", "/stocks/**", "/portfolio", "/portfolio/**").authenticated()
+                // Only permit login, register, and static resources
+                .requestMatchers("/**","/login", "/auth/login", "/register", "/auth/register", 
+                                 "/static/**", "/css/**", "/js/**", "/images/**").permitAll()
+                // Deny access to WEB-INF (optional, enhances security)
+                .requestMatchers("/WEB-INF/**").denyAll()
+                // All other requests must be authenticated
                 .anyRequest().authenticated()
+            )
+            .formLogin(form -> form.disable())    // Disable default form login
+            .exceptionHandling(exception -> exception
+                // Redirect unauthorized request to login (optional, use 401 for API)
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.sendRedirect("/login"); // Or setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                })
             )
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
             )
-            .exceptionHandling(exception -> exception
-                .authenticationEntryPoint((request, response, authException) -> {
-                    response.sendRedirect("/login");
-                })
-            )
             .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 
